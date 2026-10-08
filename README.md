@@ -182,3 +182,24 @@ The project demonstrates practical use of the following SQL concepts:
 ```sql
 SELECT SUM(amount) AS total_sales
 FROM sales;
+
+2️⃣Total Sales by Region
+SELECT 
+    g.region,
+    SUM(s.amount) AS total_sales
+FROM sales s
+JOIN geo g
+    ON s.GeoID = g.GeoID
+GROUP BY g.region
+ORDER BY total_sales DESC;
+
+3️⃣ Average Sales by Product Category
+SELECT 
+    p.category,
+    AVG(s.amount) AS average_sales
+FROM sales s
+JOIN products p
+    ON s.PID = p.PID
+GROUP BY p.category
+ORDER BY average_sales DESC;
+
